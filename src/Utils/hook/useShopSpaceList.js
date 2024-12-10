@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { addShopSpaceList } from "../../config/slice/shopSpaceSlice";
 
 function useShopSpaceList(selectedCategory) {
-  console.log(selectedCategory);
+
   const dispatch = useDispatch();
 
   async function getShopSpaceList() {

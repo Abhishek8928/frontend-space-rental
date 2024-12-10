@@ -6,6 +6,7 @@ import { removeShopSpace } from "../config/slice/shopSpaceSlice";
 import RowListCard from "./RowListCard";
 import axiosInstance from "../config/axios";
 import { Link } from "react-router-dom";
+import ShimmerWrapper from "./ShimmerWrapper";
 
 const ShopSpaces = () => {
   const dispatch = useDispatch();
@@ -42,12 +43,8 @@ const ShopSpaces = () => {
     }
   }
 
-  if (!spaceList) {
-    return <h1>loading</h1>;
-  }
-
-
-  return (
+  
+  return  !spaceList ? <ShimmerWrapper /> :  (
     <div className="w-full h-screen px-[4vw] py-[2vw]">
       
         {
