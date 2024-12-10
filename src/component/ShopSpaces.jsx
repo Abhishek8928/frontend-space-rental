@@ -15,7 +15,7 @@ const ShopSpaces = () => {
     message: "",
   });
 
-  useShopSpaceList();
+  useShopSpaceList(selectedCategory);
 
   async function deleteSpaceHandler(id) {
     try {

@@ -1,15 +1,17 @@
 import { useDispatch } from "react-redux";
-import { Navigate } from "react-router-dom";
 import axiosInstance from "../../config/axios";
 import { useEffect } from "react";
 import { addShopSpaceList } from "../../config/slice/shopSpaceSlice";
 
-function useShopSpaceList() {
+function useShopSpaceList(selectedCategory) {
+  console.log(selectedCategory);
   const dispatch = useDispatch();
 
   async function getShopSpaceList() {
     try {
-      const { data } = await axiosInstance.get("/spaces?selectedCategory=");
+      const { data } = await axiosInstance.get(
+        `/spaces?selectedCategory=${selectedCategory}`
+      );
       dispatch(addShopSpaceList(data.data));
     } catch (error) {
       console.error("Failed to fetch shop space list:", error);
@@ -18,8 +20,7 @@ function useShopSpaceList() {
 
   useEffect(() => {
     getShopSpaceList();
-  },[]);
+  }, [selectedCategory]);
 }
-
 
 export default useShopSpaceList;
